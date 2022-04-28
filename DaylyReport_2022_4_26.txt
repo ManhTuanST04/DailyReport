@@ -1,0 +1,11 @@
+Daily report 26/04/2022
+1/ Tasks hôm nay:
+- Hiển thị khung chat post của knowledge ticket [DONE]
+https://new.redmine.ominext.com/issues/32385
+- Xử lý chat trong ticket knowledge [DOING]
+https://new.redmine.ominext.com/issues/33235
+2/ Risks/Issues:
+- Không
+3/ Tasks hôm sau:
+- Xử lý chat trong ticket knowledge 
+https://new.redmine.ominext.com/issues/33235
