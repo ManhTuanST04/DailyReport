@@ -13,7 +13,6 @@
   <body>
     <div class="body-root">
       <div class="content-form">
-        <h4 style="color: red;">Sự kiện 28/04/2022: Liên hoan chuẩn bị nghỉ lễ 30/04 01/05 - 18h30 tại VỊT 34, 90 Nghĩa Tân </h4>
         <h3>Date Report (*):</h3>
         <input type="text" id="dateReport" name="dateReport" class="input-content" readonly /><br /><br />
         <h3>Today's Task (*):</h3>
@@ -35,6 +34,7 @@
           <a id="downloadFile">Download Report</a>
         </button>
         <button onclick="{resetReport()}">Reset Report</button>
+        
       </div>
     </div>
   </body>
@@ -147,6 +147,7 @@ ${tomorrowTask}
       font-size: 18px;
       font-family: "Times New Roman";
       padding: 5px;
+	  resize: vertical; 
     }
   </style>
 </html>

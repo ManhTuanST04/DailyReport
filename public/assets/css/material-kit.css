@@ -21335,7 +21335,7 @@ body.dark-version {
 
   .dropdown.dropdown-hover:after {
     content: '';
-    position: absolute;
+    /* position: absolute; */
     left: 0;
     bottom: -24px;
     width: 100%;

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Daily Report</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="data.js"></script>
+    </head>
+    <body>
+        <div class="body-root">
+            <div class="content-form">
+                <h3>Checkin time (Format: "hh:mm")</h3>
+                <input
+                    type="checkinTime"
+                    id="checkinTime"
+                    name="checkinTime"
+                    class="input-content"
+                    maxlength="5"
+                /><br /><br />
+                <button onclick="{onClickSubmit()}">Submit</button><br /><br />
+                <h3>Result</h3>
+                <input id="result" name="result" class="input-content" /><br /><br />
+            </div>
+            <div class="content-result"><br /><br /><br /><br /><br /><br /></div>
+        </div>
+    </body>
+
+    <script>
+        function onClickSubmit() {
+            let checkinTime = document.getElementById("checkinTime").value;
+
+            let hour = Number(checkinTime.slice(0, 2));
+            console.log("onClickSubmit ~ hour", hour);
+            let minutes = Number(checkinTime.slice(3, 5));
+            console.log("onClickSubmit ~ minutes", minutes);
+
+            let totalMinutes = minutes + (8 * 60 + 60 + 15);
+            console.log("totalMinutes", totalMinutes);
+
+            var exchangeHour = Math.floor(totalMinutes / 60);
+            console.log("exchangeHour", exchangeHour);
+            var exchangeMinutes = totalMinutes % 60;
+            console.log("exchangeMinutes", exchangeMinutes);
+
+            let returnHour = hour + exchangeHour;
+            console.log("returnHour", returnHour);
+            let returnMinute = exchangeMinutes;
+            console.log("returnMinute", returnMinute);
+
+            console.log("final Result", `${returnHour}:${returnMinute}`);
+
+            $("#result").val(`${returnHour}:${returnMinute}`);
+        }
+    </script>
+
+    <style>
+        button {
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .body-root {
+            display: flex;
+        }
+        .content-result,
+        .content-form {
+            margin-left: 20px;
+        }
+        .input-content {
+            font-size: 18px;
+            font-family: "Times New Roman";
+            padding: 5px;
+            resize: vertical;
+        }
+    </style>
+</html>

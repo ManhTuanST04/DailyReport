@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Form Daily Report</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css"
+            rel="stylesheet"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="data.js"></script>
+    </head>
+    <body>
+        <div class="body-root">
+            <div class="title">Insert Embedded Code Here</div>
+            <div class="container">
+                <div><textarea id="iframeCode" name="iframeCode" rows="6" cols="100" class="input-content"></textarea></div>
+                <div><button onclick="{onClickSubmit()}">Test Iframe</button></div>
+                <div><button onclick="{onClickCopyContent()}">Copy Code</button></div>
+                <div><button onclick="{clearContent()}">Clear</button></div>
+            </div>
+            <div id="iframeResult" style="height:100%; width:100%;">
+                <div id="iframeDisplay"></div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        $(window).bind('beforeunload',function(){
+            return 'Are you sure you want to leave?';
+        });
+
+        function onClickSubmit() {
+            let iframeEmbeddedCode = $("#iframeCode").val().trim();
+
+            if(iframeEmbeddedCode) {
+                $('#iframeDisplay').html(iframeEmbeddedCode);
+            }
+        }
+
+        function onClickCopyContent() {
+            let iframeEmbeddedCode = $("#iframeCode").val().trim();
+
+            if (iframeEmbeddedCode) {
+                navigator.clipboard.writeText(iframeEmbeddedCode);
+                toastr.success('Copied iframe embeded code to clipboard');
+            } else {
+                toastr.error('Please insert iframe embeded code!');
+            }
+        }
+
+        function clearContent() {
+            $("#iframeCode").val('');
+            $('#iframeDisplay').html(`<div></div>`);
+        }
+    </script>
+
+    <style>
+        body {
+            height: 100%;
+            overflow-y:scroll;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .body-root {
+            height: 100%;
+        }
+        .container {
+            display: flex;
+        }
+        button {
+            padding: 10px;
+            margin-left: 10px;
+            border-radius: 2px solid;
+            font-weight: bold;
+        }
+        .input-content {
+            font-size: 14px;
+            font-family: "Times New Roman";
+            padding: 5px;
+            /* resize: vertical; */
+        }
+    </style>
+</html>
